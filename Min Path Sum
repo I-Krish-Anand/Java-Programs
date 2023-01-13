@@ -1,0 +1,22 @@
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int[][]arr=new int[grid.length][grid[0].length];
+        return findPath(grid.length-1,grid[0].length-1,arr,grid);
+    }
+    static int findPath(int i,int j,int[][] arr,int[][]grid)
+    {
+    
+        if(i==0 && j==0)
+        return grid[0][0];
+
+        if(i<0 || j<0)
+        return 100000;
+
+        if(arr[i][j]!=0)
+        return arr[i][j];
+        
+        int a=findPath(i,j-1,arr,grid)+grid[i][j];
+        int b=findPath(i-1,j,arr,grid)+grid[i][j];
+        return arr[i][j]=Math.min(a,b);
+    }
+}
