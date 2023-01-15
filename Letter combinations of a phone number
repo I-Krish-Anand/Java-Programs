@@ -1,0 +1,28 @@
+class Solution 
+{
+    public List<String> letterCombinations(String digits) 
+    {
+        String[]arr={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        List<String>ls=new ArrayList<>();
+        findFn(arr,digits.toCharArray(),ls,0,0,"");
+        return ls;
+    } 
+    static void findFn(String[]arr,char[]digits,List<String>ls,int i,int j,String temp)
+    {
+
+        if(!(i==0 && j==0) && temp.length()==digits.length)
+        {
+        ls.add(temp);
+        return;
+        }
+
+        if(i==digits.length ||j==arr[digits[i]-48].length())
+        return;
+
+
+         temp+= arr[digits[i]-48].charAt(j);
+         findFn(arr,digits,ls,i+1,0,temp);
+         temp=temp.substring(0,temp.length()-1);
+         findFn(arr,digits,ls,i,j+1,temp);      
+    } 
+}
