@@ -1,0 +1,30 @@
+class Solution {
+    public int rob(int[] nums) {
+        int[] dp=new int[nums.length];
+        if(nums.length==1)
+        return nums[0];
+        Arrays.fill(dp,-1);
+        int a= robFn(0,nums.length-1,nums,dp);
+        int b= robFn(1,nums.length,nums,dp);
+        return Math.max(a,b);
+
+    }
+    static int robFn(int index,int n,int[] nums,int[]dp)
+    {
+         int a=0,b=0;
+         dp[index]=nums[index];
+         for(int i=index+1;i<n;i++)
+         {
+             a=nums[i];
+             if(i-2>=index)
+             a+=dp[i-2];
+             if(i-1>=index)
+             b=dp[i-1];
+
+              dp[i]=Math.max(a,b);
+         }
+         
+         return dp[n-1];
+    }
+
+}
