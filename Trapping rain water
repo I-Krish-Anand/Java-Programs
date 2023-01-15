@@ -1,0 +1,35 @@
+class Solution 
+{
+    public int trap(int[] height) 
+    {
+        int cur=0;
+        int sum=0;
+        int max=-1;
+        for(int i:height)
+        {
+            if(i>max)
+            max=i;
+        }
+        int i,j;
+        for( i=0;i<height.length;i++)
+        {
+            if(height[i]==max)
+            break;
+            
+            if(height[i]<=height[cur])
+            sum+=height[cur]-height[i];
+            else
+            cur=i;
+        }
+        cur=height.length-1;
+        for( j=height.length-1;j>i;j--)
+        {
+            if(height[j]<=height[cur])
+            sum+=height[cur]-height[j];
+            else
+            cur=j;
+        }
+        return sum;
+
+      }
+}
