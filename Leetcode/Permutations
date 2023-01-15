@@ -1,0 +1,30 @@
+class Solution {
+    static void find(int[]nums,List<List<Integer>>fs,List<Integer>ls, boolean[]map)
+    {
+
+
+        for(int i=0;i<nums.length;i++)
+        {
+            if(ls.size()==nums.length)
+            {
+                fs.add(new ArrayList<>(ls));
+                return;
+            }
+            if(!map[i])
+            {
+                ls.add(nums[i]);
+                map[i]=true;
+                find(nums,fs,ls,map);
+                ls.remove(ls.size()-1);
+                map[i]=false;
+            }
+        }
+    }
+    public List<List<Integer>> permute(int[] nums) {
+        boolean[]map=new boolean[nums.length];
+        List<Integer> ls=new ArrayList<>();
+        List<List<Integer>> fs=new ArrayList<>();
+        find(nums,fs,ls,map);
+        return fs;
+    }
+}
