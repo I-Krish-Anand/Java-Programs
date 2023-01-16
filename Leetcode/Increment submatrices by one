@@ -1,0 +1,23 @@
+class Solution {
+    public int[][] rangeAddQueries(int n, int[][] queries) 
+    {
+        int[][]matrix=new int[n][n];
+        for(int i=0;i<queries.length;i++)
+        {
+           int row=queries[i][0];
+           int col=queries[i][1];
+           int rowLimit=queries[i][2];
+           int colLimit=queries[i][3];
+           while(row<=rowLimit) 
+           {
+               for(int k=col;k<=colLimit;k++)
+                   matrix[row][k]++;
+               
+               row++;
+           }    
+
+
+        }
+        return matrix;
+    }
+}
