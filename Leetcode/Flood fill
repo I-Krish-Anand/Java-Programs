@@ -1,0 +1,30 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) 
+    {
+         int temp=image[sr][sc];  
+         int[][] map=new int[image.length][image[0].length];
+         flood(image,  sr,  sc,  color, map,temp); 
+         return image;      
+    }
+    static void flood(int[][] image, int r, int c, int color,int[][]map,int temp) 
+    {
+
+        if(r<0 || c<0 || r==image.length || c==image[0].length)
+        return;
+
+        if(map[r][c]==1)
+        return;
+
+        map[r][c]=1;
+
+        if(image[r][c]==temp)
+        image[r][c]=color;
+        else
+        return;
+        
+        flood(image,r,c+1,color,map,temp); 
+        flood(image,r+1,c,color,map,temp);
+        flood(image,r,c-1,color,map,temp);
+        flood(image,r-1,c,color,map,temp);   
+    }
+}
