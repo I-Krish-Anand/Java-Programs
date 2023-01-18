@@ -1,0 +1,19 @@
+class Solution {
+    public int numberOfArithmeticSlices(int[] nums) 
+    {
+        int contIndex=-1,count=0;
+        for(int i=2;i<nums.length;i++)
+        {
+            if(nums[i]-nums[i-1]==nums[i-1]-nums[i-2])
+            {
+                if(contIndex==-1)
+                 contIndex=i-2;
+                count+=i-contIndex-1;
+            }
+            else
+            contIndex=-1;
+        }
+        return count;
+    }
+    
+}
