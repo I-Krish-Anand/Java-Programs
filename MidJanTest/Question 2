@@ -12,7 +12,11 @@ class Question2 {
         if(i==arr.length)
             return;
 
+        if(ls.isEmpty()||ls.get(ls.size()-1)<arr[i])
         ls.add(arr[i]);
+        else
+            return;
+
         find(i+1,arr,sum+arr[i],target,ls);
         ls.remove(ls.size()-1);
         if(ls.isEmpty())
