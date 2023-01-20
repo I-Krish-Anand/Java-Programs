@@ -1,0 +1,41 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Question4
+{
+   public static void main(String[] args)
+   {
+       Scanner sc=new Scanner(System.in);
+       System.out.println("Enter type of coins");
+       int typeOfDenominations=sc.nextInt();
+       int[]denomination=new int[typeOfDenominations];
+       int[]value=new int[typeOfDenominations];
+       System.out.println("Enter sum:");
+       int sum=sc.nextInt();
+       for(int i=0;i<typeOfDenominations;i++)
+       {
+           System.out.println("Enter type of denomination $");
+           denomination[i]=sc.nextInt();
+       }
+       for(int i=0;i<typeOfDenominations;i++)
+       {
+           System.out.println("Enter No of "+denomination[i]+" rupee coins/note" );
+           value[i]=sc.nextInt();
+       }
+       Arrays.sort(denomination);
+       int coins=0;
+       for(int i=denomination.length-1;i>=0;i--)
+       {
+           sum-=denomination[i]*value[i];
+           coins+=value[i];
+           if(sum<=0) {
+               System.out.println("Withdrawal possible within:"+ coins+" range");
+               break;
+           }
+       }
+       if(sum>0)
+           System.out.println("Withdrawal not possible within limit");
+
+
+   }
+}
