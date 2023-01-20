@@ -1,27 +1,33 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
  class Question2III {
     public static void main(String[]args)
     {
         Scanner sc=new Scanner(System.in);
-        int[]nums={2,2,2,2,2,2};
-        int sum=0,i=0,j=0;
+        int[]nums={1,2,2,1,0,2};
+        List<Integer>ls=new ArrayList<>();
+        List<List<Integer>>fs=new ArrayList<>();
+        int sum=0,j=0;
         int target=sc.nextInt();
+        boolean flag=true;
         while (j<nums.length)
         {
             sum+=nums[j];
-            System.out.print(nums[j]+" ");
+            ls.add(nums[j]);
             if(sum==target)
             {
-//                for (int k=i;k<=j;k++)
-//                    System.out.print(nums[k]+" ");
-                System.out.println();
+                flag=false;
+                fs.add(new ArrayList<>(ls));
+                ls.clear();
                 sum=0;
-                i=j+1;
-                j=i;
             }
             else
+                flag=true;
              j++;
         }
+        if(!flag)
+         System.out.println(fs);
 
     }
 }
