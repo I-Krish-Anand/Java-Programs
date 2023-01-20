@@ -1,0 +1,27 @@
+import java.util.Scanner;
+ class Question2III {
+    public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int[]nums={2,2,2,2,2,2};
+        int sum=0,i=0,j=0;
+        int target=sc.nextInt();
+        while (j<nums.length)
+        {
+            sum+=nums[j];
+            System.out.print(nums[j]+" ");
+            if(sum==target)
+            {
+//                for (int k=i;k<=j;k++)
+//                    System.out.print(nums[k]+" ");
+                System.out.println();
+                sum=0;
+                i=j+1;
+                j=i;
+            }
+            else
+             j++;
+        }
+
+    }
+}
