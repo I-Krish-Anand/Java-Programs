@@ -1,0 +1,22 @@
+class SizeOutOfRange extends Exception
+{
+    SizeOutOfRange()
+    {
+         super("LinkedList Size Out of Range");
+    }
+}
+class Implement
+{
+
+    public static void main(String[] args) throws SizeOutOfRange
+    {
+           Node obj=new Node();
+           obj.add(1);
+           obj.add(2);
+           obj.add(3);
+           obj.add(4, 0);
+           //obj.delete(4);
+           obj.display();
+
+    }
+}
