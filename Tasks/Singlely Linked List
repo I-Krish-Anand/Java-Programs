@@ -1,0 +1,82 @@
+class Node
+{
+    private int data;
+    private Node next;
+    Node()
+    {}
+    private Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+    private Node head,tail;
+    private int size;
+    public void add(int data)
+    {
+        Node temp=new Node(data);
+        if(head==null)
+            head = temp;
+        else
+            tail.next=temp;
+        tail=temp;
+        size++;
+    }
+    public void add(int index,int data) throws SizeOutOfRange
+    {
+        if(index>size)
+            throw new SizeOutOfRange();
+       Node temp=new Node(data);
+       Node prev=null,curr=head;
+       int curIndex=0;
+       while (curIndex++<index)
+       {
+         prev=curr;
+         curr=curr.next;
+       }
+       if(prev==null)
+           head=temp;
+       else
+        prev.next=temp;
+
+       if(curr==null)
+           tail=temp;
+       else
+           temp.next=curr;
+       size++;
+    }
+    public void delete()
+    {
+       Node temp=head;
+       while (temp.next!=tail)
+           temp=temp.next;
+       temp.next=null;
+       tail=temp;
+       size--;
+    }
+    public void delete(int index)throws SizeOutOfRange
+    {
+        if(index>=size)
+            throw new SizeOutOfRange();
+       Node prev=null,cur=head,fwd=head.next;
+       int curIndex=0;
+       while (curIndex++<index)
+       {
+           prev=cur;
+           cur=fwd;
+           fwd=fwd.next;
+       }
+       if(cur==head)
+           head=head.next;
+       else
+        prev.next=fwd;
+       size--;
+    }
+    public void display()
+    {
+        Node iter=head;
+        while (iter!=null) {
+            System.out.println(iter.data);
+            iter = iter.next;
+        }
+    }
+}
