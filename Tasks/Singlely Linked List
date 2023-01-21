@@ -67,6 +67,10 @@ class Node
        }
        if(cur==head)
            head=head.next;
+       else if(cur==tail) {
+           tail = prev;
+           prev.next = null;
+       }
        else
         prev.next=fwd;
        size--;
@@ -80,3 +84,5 @@ class Node
         }
     }
 }
+
+
